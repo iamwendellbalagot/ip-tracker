@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  useEffect(() =>{
+    fetch('http://ip-api.com/json/24.48.0.1')
+    .then(res => res.json())
+    .then(res => console.log(res))
+
+    fetch('http://api.hostip.info/get_html.php')
+    .then(res => res.text())
+    .then(res => console.log(res.split('\n')))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>IP TRACKER</h1>
     </div>
   );
 }
