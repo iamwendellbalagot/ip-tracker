@@ -1,0 +1,73 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  flex: 0.2;
+}
+
+.header > a {
+  text-decoration: none;
+  color: #495464;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.header__title > h1 {
+  font-weight: 500;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+.header__title > h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: gray;
+  font-weight: 500;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+.header__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__form > input {
+  width: 40%;
+  margin-right: 15px;
+  outline: none;
+  height: 35px;
+  text-indent: 10px;
+  border-radius: 5px;
+}
+
+.header__form > button {
+  height: 100%;
+  padding: 0 40px;
+  background-color: #495464;
+  color: #f4f4f2;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+@media (max-width: 400px) {
+  .header__form > button {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header > a {
+    top: auto;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+  }
+}

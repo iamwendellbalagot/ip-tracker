@@ -1,0 +1,95 @@
+.body {
+  display: flex;
+  flex-direction: row;
+  flex: 0.8;
+  justify-content: center;
+  align-items: center;
+}
+
+.body__infobox {
+  flex: 0.5;
+  background-color: #fcfdfd;
+  height: 90%;
+  margin-left: 10%;
+  margin-right: 10px;
+  border-radius: 5px;
+  border-left: solid 1px black;
+  align-items: center;
+}
+
+.infobox__values {
+  margin-top: 4%;
+}
+
+.infobox__values > div {
+  display: flex;
+  margin-left: 20px;
+}
+
+.infobox__values > div > p {
+  margin-left: 10px;
+  opacity: 0.8;
+  font-size: 13px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+.infobox__values > div > span {
+  color: #0f374a;
+  opacity: 0.8;
+  font-size: 13px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+}
+
+.body__map {
+  flex: 0.5;
+  background-color: #fcfdfd;
+  height: 90%;
+  margin-right: 10%;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.body__map .leaflet-container {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.isNumber {
+  color: #cd5c12;
+}
+
+.isString {
+  color: #800;
+}
+
+.isBoolean {
+  color: #78a960;
+}
+
+@media (max-width: 700px) {
+  .body {
+    flex-direction: column;
+  }
+  .body__map .leaflet-container {
+    height: 500px;
+    border-radius: 5px;
+  }
+  .body__infobox {
+    height: 90%;
+    width: 90%;
+    margin-left: 1%;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+  .body__map {
+    height: 90%;
+    width: 90%;
+    margin-left: 1%;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}

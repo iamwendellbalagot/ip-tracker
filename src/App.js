@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
+
+import Home from './containers/Home/Home';
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 function App() {
 
-  useEffect(() =>{
-    fetch('http://ip-api.com/json/24.48.0.1')
-    .then(res => res.json())
-    .then(res => console.log(res))
-
-    fetch('http://api.hostip.info/get_html.php')
-    .then(res => res.text())
-    .then(res => console.log(res.split('\n')))
-  }, [])
-
   return (
     <div className="app">
-      <h1>IP TRACKER</h1>
+      <Home />
     </div>
   );
 }
