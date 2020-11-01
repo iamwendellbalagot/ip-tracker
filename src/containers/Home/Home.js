@@ -13,26 +13,33 @@ export default class Home extends Component {
         clientIp: ''
     }
 
-    feactInfoIP = (ip)=> `http://ip-api.com/json/${ip}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query`
+    feactInfoIP = (ip)=> `https://ipapi.co/${ip}/json/`
 
     componentDidMount() {
-
-        fetch('http://api.hostip.info/get_html.php')
-        .then(res => res.text())
-        .then(res => {
-            let clientIpInfo = res.split('\n');
-            clientIpInfo.forEach(arr =>{
-                arr = arr.split(':')
-                if(arr[0] === 'IP') {
-                    this.setState({clientIp:arr[1]})
-                }
-            })
-        })
         fetch(this.feactInfoIP(this.state.clientIp))
         .then(res => res.json())
         .then(res => {
             this.setState({ipInfo:res})
-            this.setState({center:{lat:res?.lat, lng:res?.lon}})
+            this.setState({center:{lat:res?.latitude, lng:res?.longitude}})
+        })
+
+        fetch('https://jsonip.com/?callback=?')
+        .then(res => res.text())
+        .then(res => {
+            res = res.replace('?', '');
+            res = res.replace(')', '');
+            res = res.replace('(', '');
+            res = res.replace(';', '');
+            res = res.replace('{', '');
+            res = res.replace('}', '');
+            res.split(',').forEach(k => {
+                k = k.split(':')
+                if (k[0]=== '"ip"'){
+                    k[1] = k[1].replace('"', '')
+                    k[1] = k[1].replace('"', '')
+                    this.setState({clientIp: k[1]})
+                }
+            })
         })
     }
     
@@ -45,13 +52,15 @@ export default class Home extends Component {
 
     handleIpChanged = (ip) =>{
         this.setState({ipAddress:ip})
-        console.log(ip)
         fetch(this.feactInfoIP(ip))
         .then(res => res.json())
         .then(res => {
-            if(res.status==='success'){
+            if (res.ip !== '' && !res.error){
                 this.setState({ipInfo:res})
-                this.setState({center:{lat:res?.lat, lng:res?.lon}})
+            }
+            if(!/\s/g.test(res.latitude || res.longitude) && !res.error){
+                this.setState({ipInfo:res})
+                this.setState({center:{lat:res?.latitude, lng:res?.longitude}})
             }
             
         })

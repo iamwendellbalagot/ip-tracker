@@ -18,7 +18,7 @@ function Header({getIp}) {
             <a target='_blank' href='https://github.com/iamwendellbalagot' rel='noreferrer' >Developer</a>
             <div className='header__title'>
                 <h1>IP TRACKER</h1>
-                <h3>Search any IP address/domain</h3>
+                <h3>Search any IP address</h3>
             </div>
             
             <form className='header__form' onSubmit={handleSubmit}>
